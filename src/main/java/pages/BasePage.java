@@ -31,6 +31,7 @@ public class BasePage {
     By inventoryItemsBy = By.xpath("//li [@class = 'item product product-item']");
 
 
+
     public BasePage(WebDriver driver) {
         this.driver = driver;
         wait = new WebDriverWait(driver, Duration.ofSeconds(10), Duration.ofMillis(250));
@@ -140,5 +141,10 @@ public class BasePage {
         }
 
         return productsList;
+    }
+
+    public void waitForLoader (By elementLocator){
+        waitVisibilityOf(elementLocator);
+        waitInvisibility(elementLocator);
     }
 }
