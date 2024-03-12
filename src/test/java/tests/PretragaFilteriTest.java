@@ -19,17 +19,15 @@ public class PretragaFilteriTest extends BaseTest {
 
         basePage.priceRange("2000", "5000");
 
-        By loaderLocatorBy = By.xpath("//div [@class = 'loader']");
 
-
-        basePage.waitForLoader(loaderLocatorBy);
+        basePage.waitForLoader();
 
         Assert.assertEquals(driver.getCurrentUrl(), "https://eplaneta.rs/catalogsearch/result/index/?price=2000.00-5000.00&q=nike");
 
         basePage.waitVisibility(By.xpath("//li [@data-label= 'Sport i hobi']"));
         basePage.kategorijaFilter(By.xpath("//li [@data-label= 'Sport i hobi']"));
 
-        basePage.waitForLoader(loaderLocatorBy);
+        basePage.waitForLoader();
 
         Assert.assertEquals(driver.getCurrentUrl(), "https://eplaneta.rs/catalogsearch/result/index/?cat=4081&price=2000.00-5000.00&q=nike");
 

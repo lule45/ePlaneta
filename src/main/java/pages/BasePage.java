@@ -29,6 +29,7 @@ public class BasePage {
     By inventoryNameBy = By.xpath("//a [@class = 'product-item-link']");
     By inventoryItemPriceBy = By.xpath("//span [@class = 'price-container price-final_price tax weee']");
     By inventoryItemsBy = By.xpath("//li [@class = 'item product product-item']");
+    By loaderBy = By.xpath("//div [@class = 'loader']");
 
 
 
@@ -143,8 +144,8 @@ public class BasePage {
         return productsList;
     }
 
-    public void waitForLoader (By elementLocator){
-        waitVisibilityOf(elementLocator);
-        waitInvisibility(elementLocator);
+    public void waitForLoader (){
+        waitVisibilityOf(loaderBy);
+        waitInvisibility(loaderBy);
     }
 }
