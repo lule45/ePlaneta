@@ -26,7 +26,6 @@ public class PretragaFilteriTest extends BaseTest {
 
         Assert.assertEquals(driver.getCurrentUrl(), "https://eplaneta.rs/catalogsearch/result/index/?price=2000.00-5000.00&q=nike");
 
-        //filter by Sport i hobi
         basePage.waitVisibility(By.xpath("//li [@data-label= 'Sport i hobi']"));
         basePage.kategorijaFilter(By.xpath("//li [@data-label= 'Sport i hobi']"));
 
