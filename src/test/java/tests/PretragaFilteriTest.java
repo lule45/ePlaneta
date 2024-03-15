@@ -11,14 +11,14 @@ import java.util.List;
 public class PretragaFilteriTest extends BaseTest {
 
     @Test
-    public void pretragaFilteriTest() throws InterruptedException {
+    public void pretragaFilteriTest() {
+
         BasePage basePage = new BasePage(driver);
         basePage.searchForSomething("nike");
 
         Assert.assertEquals(driver.getCurrentUrl(), "https://eplaneta.rs/catalogsearch/result/?q=nike");
 
         basePage.priceRange("2000", "5000");
-
 
         basePage.waitForLoader();
 
@@ -31,8 +31,8 @@ public class PretragaFilteriTest extends BaseTest {
 
         Assert.assertEquals(driver.getCurrentUrl(), "https://eplaneta.rs/catalogsearch/result/index/?cat=4081&price=2000.00-5000.00&q=nike");
 
-        List<WebElement> listaNike2kDo5k = driver.findElements(By.xpath("//span[@class='normal-price special-price']"));
-        listaNike2kDo5k.forEach(e -> {
+        List<WebElement> nikePriceFiltersList = driver.findElements(By.xpath("//span[@class='normal-price special-price']"));
+        nikePriceFiltersList.forEach(e -> {
             String priceAsString = e.getText().replace(",99 RSD", "");
 
             if (!priceAsString.isBlank()) {

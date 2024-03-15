@@ -1,6 +1,5 @@
 package pages;
 
-import models.Product;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -9,8 +8,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
-import java.util.ArrayList;
-import java.util.List;
 
 public class BasePage {
 
@@ -20,6 +17,8 @@ public class BasePage {
     private By obucaSportskaBy = By.xpath("//li[@id='category-node-33998']");
     private By obucaSportskaTenisBy = By.xpath("//a[@href='https://eplaneta.rs/obuca/sportska-obuca/patike-za-tenis.html']");
     private By searchButtonBy = By.id("search");
+    private By SportIHobiBy = By.xpath("//li [@data-label= 'Sport i hobi']");
+
 
     By categoryFilterBy = By.xpath("//div [@class = 'filter-options-title']");
     By priceFromFilterBy = By.xpath("//input[@class = 'am-filter-price -from input-text']");
@@ -30,7 +29,6 @@ public class BasePage {
     By inventoryItemPriceBy = By.xpath("//span [@class = 'price-container price-final_price tax weee']");
     By inventoryItemsBy = By.xpath("//li [@class = 'item product product-item']");
     By loaderBy = By.xpath("//div [@class = 'loader']");
-
 
 
     public BasePage(WebDriver driver) {
@@ -46,7 +44,7 @@ public class BasePage {
         wait.until(ExpectedConditions.visibilityOf(driver.findElement(elementLocator)));
     }
 
-    public void waitInvisibility (By elementLocator){
+    public void waitInvisibility(By elementLocator) {
         wait.until(ExpectedConditions.invisibilityOfElementLocated(elementLocator));
 
     }
@@ -61,10 +59,21 @@ public class BasePage {
         driver.findElement(elementLocator).sendKeys(text);
     }
 
-    public void hoverOverLinkToObuca() {
+    public void goToCategoryPage(By categoryLocator) {
+        driver.findElement(categoryLocator).click();
+    }
+
+    public void hoverOverKategorijeButton() {
         Actions actions = new Actions(driver);
 
-        actions.moveToElement(driver.findElement(linkToObucaBy)).perform();
+        actions.moveToElement(driver.findElement(By.xpath("//li[@class = 'level0 level-master-menu-item']")))
+                .perform();
+    }
+
+    public void hoverOverCategory(By categoryNameBy) {
+        Actions actions = new Actions(driver);
+
+        actions.moveToElement(driver.findElement(categoryNameBy)).perform();
     }
 
     public void hoverOverlinkToObucaSportska() {
@@ -78,8 +87,8 @@ public class BasePage {
         linkToObucaSportskaTenis.click();
     }
 
-    public WebElement obucaElement() {
-        return driver.findElement(linkToObucaBy);
+    public WebElement categoryElement(By categoryLocator) {
+        return driver.findElement(categoryLocator);
     }
 
     public By getLinkObucaSportskaBy() {
@@ -88,6 +97,10 @@ public class BasePage {
 
     public By getLinkObucaSportskaTenisBy() {
         return obucaSportskaTenisBy;
+    }
+
+    public By getSportIHobiBy() {
+        return SportIHobiBy;
     }
 
     public void searchForSomething(String searchTerm) {
@@ -106,10 +119,9 @@ public class BasePage {
         podKategorijaFilter.click();
     }
 
-    public void priceRange(String from, String to) throws InterruptedException {
+    public void priceRange(String from, String to) {
 
         waitVisibility(priceSliderBy);
-        Actions actions = new Actions(driver);
 
         WebElement fromFilter = driver.findElement(priceFromFilterBy);
         fromFilter.clear();
@@ -125,26 +137,7 @@ public class BasePage {
         clickElement(priceFilterButtonBy);
     }
 
-    public List<Product> returnProducts() {
-        List<Product> productsList = new ArrayList<>();
-
-        List<WebElement> inventoryItemList = driver.findElements(inventoryItemsBy);
-        for(int i = 0; i < inventoryItemList.size(); i++) {
-            WebElement inventoryItemName = inventoryItemList.get(i).findElement(inventoryNameBy);
-            String inventoryItemNameAsString = inventoryItemName.getText();
-
-            WebElement inventoryItemPrice = inventoryItemList.get(i).findElement(inventoryItemPriceBy);
-            String inventoryItemPriceAsString = inventoryItemPrice.getText();
-            double inventoryItemPriceAsNumber = Double.parseDouble(inventoryItemPriceAsString.replace("RSD",""));
-
-            Product product = new Product(inventoryItemNameAsString, inventoryItemPriceAsNumber);
-            productsList.add(product);
-        }
-
-        return productsList;
-    }
-
-    public void waitForLoader (){
+    public void waitForLoader() {
         waitVisibilityOf(loaderBy);
         waitInvisibility(loaderBy);
     }

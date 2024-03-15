@@ -1,30 +1,24 @@
 package tests;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
+import pages.BasePage;
 import pages.HomePage;
 import pages.ObucaPage;
 
 public class ObucaTest extends BaseTest {
-
-
     @Test
-    public void obucaTest() {
+    public void categoryTest() {
 
-        HomePage homePage = new HomePage(driver);
-        ObucaPage obucaPage = new ObucaPage(driver);
+        BasePage basePage = new BasePage(driver);
 
-        homePage.goToObucaPage();
-        Assert.assertEquals(driver.getCurrentUrl(), obucaPage.obucaURL());
+        basePage.goToCategoryPage(By.xpath("//li[@id='category-node-3289']"));
 
-        obucaPage.titleObuca();
-        Assert.assertEquals(obucaPage.titleObuca().getText(), "Obuća");
-
+        SoftAssert softAssert = new SoftAssert();
+        softAssert.assertEquals(driver.getCurrentUrl(), "https://eplaneta.rs/obuca.html");
+        softAssert.assertEquals(driver.findElement(By.id("page-title-heading")).getText(), "Obuća");
+        softAssert.assertAll();
     }
 }

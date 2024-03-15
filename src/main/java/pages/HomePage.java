@@ -2,7 +2,6 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 public class HomePage extends BasePage {
 
@@ -13,7 +12,5 @@ public class HomePage extends BasePage {
         super(driver);
     }
 
-    public void goToObucaPage() {
-        obucaElement().click();
-    }
+
 }
