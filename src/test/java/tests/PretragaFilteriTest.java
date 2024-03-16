@@ -31,8 +31,8 @@ public class PretragaFilteriTest extends BaseTest {
 
         Assert.assertEquals(driver.getCurrentUrl(), "https://eplaneta.rs/catalogsearch/result/index/?cat=4081&price=2000.00-5000.00&q=nike");
 
-        List<WebElement> nikePriceFiltersList = driver.findElements(By.xpath("//span[@class='normal-price special-price']"));
-        nikePriceFiltersList.forEach(e -> {
+        List<WebElement> priceFiltersList = driver.findElements(By.xpath("//span[@class='normal-price special-price']"));
+        priceFiltersList.forEach(e -> {
             String priceAsString = e.getText().replace(",99 RSD", "");
 
             if (!priceAsString.isBlank()) {

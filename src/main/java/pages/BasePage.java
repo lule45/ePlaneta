@@ -29,6 +29,8 @@ public class BasePage {
     By inventoryItemPriceBy = By.xpath("//span [@class = 'price-container price-final_price tax weee']");
     By inventoryItemsBy = By.xpath("//li [@class = 'item product product-item']");
     By loaderBy = By.xpath("//div [@class = 'loader']");
+    By productSortContainerBy = By.xpath("//select[@data-role= 'sorter']");
+
 
 
     public BasePage(WebDriver driver) {
