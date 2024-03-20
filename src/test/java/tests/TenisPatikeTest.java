@@ -26,9 +26,6 @@ public class TenisPatikeTest extends BaseTest {
 
         basePage.clickOnObucaSportskaTenisButton();
 
-//        OVDE NECE DA NADJE "TENIS" DUGME!!!!
-//        basePage.clickElement(By.xpath("//a[@href='https://eplaneta.rs/obuca/sportska-obuca/patike-za-tenis.html']"));
-
         SoftAssert softAssert = new SoftAssert();
         softAssert.assertEquals(driver.getCurrentUrl(), "https://eplaneta.rs/obuca/sportska-obuca/patike-za-tenis.html");
 
@@ -36,7 +33,5 @@ public class TenisPatikeTest extends BaseTest {
 
         softAssert.assertEquals(titleObucaSubcategory.getText(), "Patike za tenis");
         softAssert.assertAll("Asertacija je pukla");
-
-        driver.quit();
     }
 }

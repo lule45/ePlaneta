@@ -41,6 +41,5 @@ public class PretragaFilteriTest extends BaseTest {
                 Assert.assertTrue(priceAsDouble < 5000 && priceAsDouble > 2000);
             }
         });
-
     }
 }

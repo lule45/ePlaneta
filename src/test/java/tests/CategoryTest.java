@@ -1,14 +1,11 @@
 package tests;
 
 import org.openqa.selenium.By;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import pages.BasePage;
-import pages.HomePage;
-import pages.ObucaPage;
 
-public class ObucaTest extends BaseTest {
+public class CategoryTest extends BaseTest {
     @Test
     public void categoryTest() {
 
