@@ -1,5 +1,6 @@
 package pages;
 
+import dataGenerator.DataGenerator;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -31,12 +32,14 @@ public class LoginPage extends BasePage{
         return loginButtonBy;
     }
 
-    public void clickOnLoginButton (){
-        clickElement(loginButtonBy);
-    }
 
     public void clickOnProfileButton (){
         clickElement(profileButtonBy);
     }
 
+    public void performLogin (){
+        driver.findElement(getEmailFieldBy()).sendKeys(DataGenerator.generateEmail());
+        driver.findElement(getPasswordFieldBy()).sendKeys(DataGenerator.generatePassword());
+        driver.findElement(getLoginButtonBy()).click();
+    }
 }

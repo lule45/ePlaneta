@@ -20,9 +20,7 @@ public class FailedLoginTest extends BaseTest {
         if (driver.findElement(By.id("block-customer-heading")).getText().contains("Kreiraj nalog")) {
             driver.findElement(By.xpath("//p [@id = 'login-register-btn']")).click();
         } else {
-            driver.findElement(loginPage.getEmailFieldBy()).sendKeys(DataGenerator.generateEmail());
-            driver.findElement(loginPage.getPasswordFieldBy()).sendKeys(DataGenerator.generatePassword());
-            driver.findElement(loginPage.getLoginButtonBy()).click();
+            loginPage.performLogin();
         }
 
         Thread.sleep(3000);
