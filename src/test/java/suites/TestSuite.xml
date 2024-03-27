@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Test Suite">
+    <listeners>
+
+    </listeners>
+
+    <parameter name="browser" value="Chrome"></parameter>
+
+    <test name="FailedLoginTest">
+        <classes>
+            <class name="tests.FailedLoginTest"></class>
+        </classes>
+    </test>
+
+    <test name="PretragaFilteriTest">
+        <classes>
+            <class name="tests.PretragaFilteriTest"></class>
+        </classes>
+    </test>
+
+    <test name="TenisPatikeTest">
+        <classes>
+            <class name="tests.TenisPatikeTest"></class>
+        </classes>
+    </test>
+
+    <test name="CategoryTest">
+        <classes>
+            <class name="tests.CategoryTest"></class>
+        </classes>
+    </test>
+
+</suite>
