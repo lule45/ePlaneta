@@ -7,11 +7,11 @@ import pages.BasePage;
 
 public class CategoryTest extends BaseTest {
     @Test
-    public void categoryTest() {
 
+    public void categoryTest() {
         BasePage basePage = new BasePage(driver);
 
-        basePage.goToCategoryPage(By.xpath("//li[@id='category-node-3289']"));
+        basePage.goToCategoryPage(By.xpath("//li[@id='category-node-328']"));
 
         SoftAssert softAssert = new SoftAssert();
         softAssert.assertEquals(driver.getCurrentUrl(), "https://eplaneta.rs/obuca.html");
