@@ -11,7 +11,7 @@ public class CategoryTest extends BaseTest {
     public void categoryTest() {
         BasePage basePage = new BasePage(driver);
 
-        basePage.goToCategoryPage(By.xpath("//li[@id='category-node-328']"));
+        basePage.goToCategoryPage(By.xpath("//li[@id='category-node-3289']"));
 
         SoftAssert softAssert = new SoftAssert();
         softAssert.assertEquals(driver.getCurrentUrl(), "https://eplaneta.rs/obuca.html");

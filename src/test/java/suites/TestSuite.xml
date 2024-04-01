@@ -15,6 +15,8 @@
             <class name="tests.PretragaFilteriTest"></class>
             <class name="tests.TenisPatikeTest"></class>
             <class name="tests.CategoryTest"></class>
+            <class name="tests.AddRandomItem"></class>
+
 
         </classes>
     </test>
