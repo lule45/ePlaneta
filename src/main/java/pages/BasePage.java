@@ -22,6 +22,8 @@ public class BasePage {
     private By searchButtonBy = By.id("search");
     private By SportIHobiBy = By.xpath("//li [@data-label= 'Sport i hobi']");
     private By addToCartButtonBy = By.xpath("//button [@id = 'product-addtocart-button']");
+    private By cartButtonBy = By.xpath("//div [@class = 'minicart-wrapper']");
+    private By removeButtonConfirmationBy = By.xpath("//button [@class = 'action-primary action-accept']");
 
 
     By categoryFilterBy = By.xpath("//div [@class = 'filter-options-title']");
@@ -34,6 +36,7 @@ public class BasePage {
     By inventoryItemsBy = By.xpath("//li [@class = 'item product product-item']");
     By loaderBy = By.xpath("//div [@class = 'loader']");
     By productSortContainerBy = By.xpath("//select[@data-role= 'sorter']");
+
 
 
     public BasePage(WebDriver driver) {
@@ -112,6 +115,14 @@ public class BasePage {
         return addToCartButtonBy;
     }
 
+    public By getRemoveButtonConfirmationBy() {
+        return removeButtonConfirmationBy;
+    }
+
+    public By getCartButtonBy() {
+        return cartButtonBy;
+    }
+
     public void searchForSomething(String searchTerm) {
         WebElement searchField = driver.findElement(searchButtonBy);
         searchField.sendKeys(searchTerm);
@@ -160,5 +171,10 @@ public class BasePage {
         int size = webElementList.size();
         int selection = random.nextInt(size);
         return webElementList.get(selection);
+    }
+
+    public String readAttributeValue(By elementLocator, String attributeName){
+        waitVisibility(elementLocator);
+        return driver.findElement(elementLocator).getAttribute(attributeName);
     }
 }
