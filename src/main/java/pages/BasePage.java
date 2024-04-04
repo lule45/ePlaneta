@@ -6,8 +6,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.SkipException;
 
 import java.time.Duration;
+import java.util.List;
+import java.util.Random;
+
 
 public class BasePage {
 
@@ -18,6 +22,10 @@ public class BasePage {
     private By obucaSportskaTenisBy = By.xpath("//a[@href='https://eplaneta.rs/obuca/sportska-obuca/patike-za-tenis.html']");
     private By searchButtonBy = By.id("search");
     private By SportIHobiBy = By.xpath("//li [@data-label= 'Sport i hobi']");
+    private By addToCartButtonBy = By.xpath("//button [@id = 'product-addtocart-button']");
+    private By cartButtonBy = By.xpath("//div [@class = 'minicart-wrapper']");
+    private By removeButtonConfirmationBy = By.xpath("//button [@class = 'action-primary action-accept']");
+
 
 
     By categoryFilterBy = By.xpath("//div [@class = 'filter-options-title']");
@@ -105,6 +113,18 @@ public class BasePage {
         return SportIHobiBy;
     }
 
+    public By getAddToCartButtonBy() {
+        return addToCartButtonBy;
+    }
+
+    public By getRemoveButtonConfirmationBy() {
+        return removeButtonConfirmationBy;
+    }
+
+    public By getCartButtonBy() {
+        return cartButtonBy;
+    }
+
     public void searchForSomething(String searchTerm) {
         WebElement searchField = driver.findElement(searchButtonBy);
         searchField.sendKeys(searchTerm);
@@ -142,5 +162,21 @@ public class BasePage {
     public void waitForLoader() {
         waitVisibilityOf(loaderBy);
         waitInvisibility(loaderBy);
+    }
+
+    public WebElement selectRandomWebElement(By elementLocator) {
+        List<WebElement> webElementList = driver.findElements(elementLocator);
+        if (webElementList.size() == 0) {
+            throw new SkipException("No available items in store!");
+        }
+        Random random = new Random();
+        int size = webElementList.size();
+        int selection = random.nextInt(size);
+        return webElementList.get(selection);
+    }
+
+    public String readAttributeValue(By elementLocator, String attributeName){
+        waitVisibility(elementLocator);
+        return driver.findElement(elementLocator).getAttribute(attributeName);
     }
 }
