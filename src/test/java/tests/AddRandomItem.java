@@ -46,9 +46,9 @@ public class AddRandomItem extends BaseTest {
 
         cartPage.removeItemFromCart();
 
-        WebElement nestoTamo = driver.findElement(By.xpath("//div [@class = 'block-content']"));
+        WebElement cartBlock = driver.findElement(By.xpath("//div [@class = 'block-content']"));
 
-        WebElement emptyCartText = nestoTamo.findElement(By.xpath("//div [@id = 'minicart-content-wrapper']"));
+        WebElement emptyCartText = cartBlock.findElement(By.xpath("//div [@id = 'minicart-content-wrapper']"));
 
         basePage.waitInvisibility(By.xpath("//a [@class = 'action delete']"));
 

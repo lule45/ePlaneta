@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class CartPage extends BasePage {
+    By ukloniButtonBy = By.xpath("//a [@class = 'action delete']");
 
     public CartPage(WebDriver driver) {
         super(driver);
@@ -12,8 +13,8 @@ public class CartPage extends BasePage {
 
 
     public void removeItemFromCart() {
-        WebElement ukloniButton = driver.findElement(By.xpath("//a [@class = 'action delete']"));
-        waitVisibilityOf(By.xpath("//a [@class = 'action delete']"));
+        WebElement ukloniButton = driver.findElement(ukloniButtonBy);
+        waitVisibilityOf(ukloniButtonBy);
         ukloniButton.click();
         waitVisibilityOf(getRemoveButtonConfirmationBy());
         WebElement deleteItemButtonConfirmation = driver.findElement(getRemoveButtonConfirmationBy());
