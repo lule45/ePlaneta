@@ -7,8 +7,8 @@ import pages.BasePage;
 
 public class CategoryTest extends BaseTest {
     @Test
-
     public void categoryTest() {
+
         BasePage basePage = new BasePage(driver);
 
         basePage.goToCategoryPage(By.xpath("//li[@id='category-node-3289']"));

@@ -12,6 +12,7 @@ import java.time.Duration;
 import java.util.List;
 import java.util.Random;
 
+
 public class BasePage {
 
     WebDriver driver;
@@ -24,6 +25,7 @@ public class BasePage {
     private By addToCartButtonBy = By.xpath("//button [@id = 'product-addtocart-button']");
     private By cartButtonBy = By.xpath("//div [@class = 'minicart-wrapper']");
     private By removeButtonConfirmationBy = By.xpath("//button [@class = 'action-primary action-accept']");
+
 
 
     By categoryFilterBy = By.xpath("//div [@class = 'filter-options-title']");
