@@ -22,13 +22,13 @@ public class PretragaFilteriTest extends BaseTest {
         basePage.searchForSomething("nike");
         SoftAssert softAssert = new SoftAssert();
 
-        Assert.assertEquals(driver.getCurrentUrl(), "https://eplaneta.rs/catalogsearch/result/?q=nike");
+        softAssert.assertEquals(driver.getCurrentUrl(), "https://eplaneta.rs/catalogsearch/result/?q=nike");
 
         basePage.priceRange("2000", "5000");
 
         basePage.waitForLoader();
 
-        Assert.assertEquals(driver.getCurrentUrl(), "https://eplaneta.rs/catalogsearch/result/index/?price=2000.00-5000.00&q=nike");
+        softAssert.assertEquals(driver.getCurrentUrl(), "https://eplaneta.rs/catalogsearch/result/index/?price=2000.00-5000.00&q=nike");
 
         basePage.waitVisibility(By.xpath("//li [@data-label= 'Sport i hobi']"));
         basePage.kategorijaFilter(By.xpath("//li [@data-label= 'Sport i hobi']"));
@@ -43,7 +43,6 @@ public class PretragaFilteriTest extends BaseTest {
         itemsList.forEach(e -> {
             String priceAsString = e.getText().replace(".", "").substring(0, 4);
 
-            System.out.println(priceAsString + " SPECIAL");
             double priceAsDouble = Double.parseDouble(priceAsString);
             softAssert.assertTrue(priceAsDouble < 5000 && priceAsDouble > 2000);
 
@@ -53,8 +52,6 @@ public class PretragaFilteriTest extends BaseTest {
         itemsList2.forEach(e -> {
             String priceAsString = e.getText().replace(".", "").substring(0, 4);
 
-            System.out.println(priceAsString + " NORMAL SPECIAL");
-
             double priceAsDouble = Double.parseDouble(priceAsString);
             softAssert.assertTrue(priceAsDouble < 5000 && priceAsDouble > 2000);
 
@@ -63,8 +60,6 @@ public class PretragaFilteriTest extends BaseTest {
         List<WebElement> itemsList3 = itemsContainer.findElements(By.xpath(".//span [@class = 'normal-price regular ']"));
         itemsList3.forEach(e -> {
             String priceAsString = e.getText().replace(".", "").substring(0, 4);
-
-            System.out.println(priceAsString + " REGULAR");
 
             double priceAsDouble = Double.parseDouble(priceAsString);
             softAssert.assertTrue(priceAsDouble < 5000 && priceAsDouble > 2000);
