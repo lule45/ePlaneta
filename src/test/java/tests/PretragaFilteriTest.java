@@ -39,8 +39,8 @@ public class PretragaFilteriTest extends BaseTest {
 
         WebElement itemsContainer = driver.findElement(By.xpath("//ol[@class = 'products list items product-items']"));
 
-        List<WebElement> itemsList = itemsContainer.findElements(By.xpath(".//span [@class = 'special-price']"));
-        itemsList.forEach(e -> {
+        List<WebElement> SearchItemsListFirstLocatorForPrice = itemsContainer.findElements(By.xpath(".//span [@class = 'special-price']"));
+        SearchItemsListFirstLocatorForPrice.forEach(e -> {
             String priceAsString = e.getText().replace(".", "").substring(0, 4);
 
             double priceAsDouble = Double.parseDouble(priceAsString);
@@ -48,8 +48,8 @@ public class PretragaFilteriTest extends BaseTest {
 
         });
 
-        List<WebElement> itemsList2 = itemsContainer.findElements(By.xpath(".//span [@class = 'normal-price special-price ']"));
-        itemsList2.forEach(e -> {
+        List<WebElement> SearchItemsListSecondLocatorForPrice = itemsContainer.findElements(By.xpath(".//span [@class = 'normal-price special-price ']"));
+        SearchItemsListSecondLocatorForPrice.forEach(e -> {
             String priceAsString = e.getText().replace(".", "").substring(0, 4);
 
             double priceAsDouble = Double.parseDouble(priceAsString);
@@ -57,8 +57,8 @@ public class PretragaFilteriTest extends BaseTest {
 
         });
 
-        List<WebElement> itemsList3 = itemsContainer.findElements(By.xpath(".//span [@class = 'normal-price regular ']"));
-        itemsList3.forEach(e -> {
+        List<WebElement> SearchItemsListThirdLocatorForPrice = itemsContainer.findElements(By.xpath(".//span [@class = 'normal-price regular ']"));
+        SearchItemsListThirdLocatorForPrice.forEach(e -> {
             String priceAsString = e.getText().replace(".", "").substring(0, 4);
 
             double priceAsDouble = Double.parseDouble(priceAsString);
